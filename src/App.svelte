@@ -1,4 +1,5 @@
 <script>
+  import { onMount } from "svelte";
   import * as hpq from "hpq";
   let movies = [];
   let genres = [];
@@ -49,7 +50,9 @@
     }));
   };
 
-  loadData();
+  onMount(async () => {
+    await loadData();
+  });
 
   const setSelectedGenre = (genre = "") => {
     if (genre === selectedGenre) {
